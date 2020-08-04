@@ -1,39 +1,17 @@
 import React from "react";
-import { Container, Row, Col, Form, Input, Button } from "reactstrap";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { Container, Row, Col, Form, Button } from "reactstrap";
 import Header from "../components/Header";
-import LocationAutocomplete from "../components/LocationAutocomplete";
+import EstimateAddress from "../components/EstimateAddress";
 
-interface Props extends RouteComponentProps {}
+interface Props {}
 
-interface States {
-  address: string;
-}
+interface States {}
 
 class Landing extends React.Component<Props, States> {
-  readonly state: States = {
-    address: "",
-  };
-
-  onAddressChanged = (address: string) => {
-    this.setState({ address: address });
-    this.props.history.push("/Estimate/" + address);
-  };
-
-  handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    if (this.state.address === "") {
-      return false;
-    }
-
-    this.props.history.push("/Estimate/" + this.state.address);
-  };
-
   render() {
     return (
       <div className="App">
-        <Header fixed="top" />
+        <Header fixed="top" showSearch={false} />
         <main className="landing-background">
           <div className="overlay"></div>
           <Container>
@@ -42,10 +20,10 @@ class Landing extends React.Component<Props, States> {
                 <h1 className="mb-5 text-white">Get a car wash estimate</h1>
               </Col>
             </Row>
-            <Form onSubmit={this.handleSubmit}>
+            <Form>
               <Row>
                 <Col sm="12" md="9" className="mb-4">
-                  <LocationAutocomplete onChange={this.onAddressChanged} />
+                  <EstimateAddress />
                 </Col>
                 <Col sm="12" md="3">
                   <Button color="primary" size="lg" block>
@@ -61,4 +39,4 @@ class Landing extends React.Component<Props, States> {
   }
 }
 
-export default withRouter(Landing);
+export default Landing;

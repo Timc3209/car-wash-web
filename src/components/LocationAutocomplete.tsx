@@ -3,6 +3,7 @@ import AlgoliaPlaces from "algolia-places-react";
 
 interface Props {
   onChange: (address: string) => void;
+  setRef?: any;
 }
 
 interface OnChangeProps {
@@ -11,9 +12,10 @@ interface OnChangeProps {
 }
 
 export default (props: Props) => {
-  const { onChange } = props;
+  const { onChange, setRef } = props;
   return (
     <AlgoliaPlaces
+      ref={setRef && setRef}
       placeholder="Write an address here"
       className="form-control-lg form-control"
       options={{

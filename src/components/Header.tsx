@@ -1,26 +1,40 @@
 import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import EstimateAddress from "./EstimateAddress";
 
 interface Props {
   fixed?: string;
+  showSearch: boolean;
 }
 
 export default class Header extends React.Component<Props, any> {
   render() {
-    const { fixed } = this.props;
+    const { fixed, showSearch } = this.props;
     return (
-      <Navbar color="dark" dark expand="md" fixed={fixed}>
-        <NavbarBrand href="/">Car Wash</NavbarBrand>
-        <div className="navbar-right">
-          <Nav navbar>
-            <NavItem>
-              <NavLink to="/taskBoard" className="nav-link">
-                Sign In
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </div>
-      </Navbar>
+      <div className="header-container">
+        <Navbar color="dark" dark expand="md" fixed={fixed}>
+          <NavbarBrand href="/">Car Wash</NavbarBrand>
+          {showSearch && (
+            <div className="navbar-search desktop-only">
+              <EstimateAddress />
+            </div>
+          )}
+          <div className="navbar-right">
+            <Nav navbar>
+              <NavItem>
+                <NavLink to="/Estimate/sdadsa" className="nav-link">
+                  Sign In
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </div>
+        </Navbar>
+        {showSearch && (
+          <div className="navbar-search-mobile mobile-only">
+            <EstimateAddress />
+          </div>
+        )}
+      </div>
     );
   }
 }

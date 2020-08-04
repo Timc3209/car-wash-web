@@ -1,37 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { AppState } from "../redux/reducers";
 import Header from "../components/Header";
 
-type MatchProps = {
-  search: string;
-};
-
-interface Props extends RouteComponentProps<MatchProps> {}
-
-interface States {
+interface Props {
   address: string;
 }
 
-class Estimate extends React.Component<Props, States> {
-  readonly state: States = {
-    address: "",
-  };
-
-  componentDidMount() {
-    const address: any = this.props.match.params.search;
-    this.setState({ address: address });
-  }
-
+class Estimate extends React.Component<Props> {
   render() {
-    const { address } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header showSearch={true} />
         <Container>
           <Row>
             <Col>
-              <h1 className="mb-5">Local Results: {address}</h1>
+              <h1 className="mb-5">Local Results: </h1>
             </Col>
           </Row>
         </Container>
@@ -40,4 +25,9 @@ class Estimate extends React.Component<Props, States> {
   }
 }
 
-export default withRouter(Estimate);
+const mapStateToProps = ({ estimate }: AppState) => {
+  const { address } = estimate;
+  return { address };
+};
+
+export default connect(mapStateToProps, undefined)(Estimate);
