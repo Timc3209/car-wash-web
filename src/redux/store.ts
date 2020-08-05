@@ -19,4 +19,5 @@ const persistedReducer = persistReducer<AppState, any>(
 const middleware = applyMiddleware(thunk);
 const store = createStore(persistedReducer, middleware);
 const persistor = persistStore(store);
+persistor.purge();
 export { store, persistor };
