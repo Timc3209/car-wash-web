@@ -12,10 +12,6 @@ h6 {
   font-weight: 700;
 }
 
-.header-container {
-  margin-bottom: 20px;
-}
-
 .navbar-brand {
   margin-left: 15px;
 }
@@ -37,7 +33,7 @@ h6 {
   height: 100vh;
   padding-bottom: 2rem;
   background-color: #343a40;
-  background: url("../images/bg-landing.jpg") no-repeat center center;
+  background: url("../images/landing-bg.jpg") no-repeat top center;
   background-size: cover;
   display: flex;
   align-items: center;

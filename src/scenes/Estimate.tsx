@@ -1,33 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "reactstrap";
 import { AppState } from "../redux/reducers";
+import { CompanyState } from "../redux/types";
 import Header from "../components/Header";
+import CompanyList from "../components/CompanyList";
 
 interface Props {
   address: string;
+  companies: Array<CompanyState>;
 }
 
 class Estimate extends React.Component<Props> {
   render() {
+    const { companies } = this.props;
     return (
       <div className="App">
         <Header showSearch={true} />
-        <Container>
-          <Row>
-            <Col>
-              <h1 className="mb-5">Local Results: </h1>
-            </Col>
-          </Row>
-        </Container>
+        <CompanyList title="Local Results" companies={companies} />
       </div>
     );
   }
 }
 
 const mapStateToProps = ({ estimate }: AppState) => {
-  const { address } = estimate;
-  return { address };
+  const { address, companies } = estimate;
+  return { address, companies };
 };
 
 export default connect(mapStateToProps, undefined)(Estimate);

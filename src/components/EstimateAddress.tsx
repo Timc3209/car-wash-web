@@ -4,6 +4,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { estimateSuccess } from "../redux/actions";
 import { AppState } from "../redux/reducers";
 import LocationAutocomplete from "./LocationAutocomplete";
+import { companies } from "../test/data";
 
 type MatchProps = {
   search: string;
@@ -18,17 +19,21 @@ class EstimateAddress extends React.Component<Props, any> {
   private inputRef: any = createRef();
 
   componentDidMount() {
-    const address: any = this.props.match.params.search;
+    const { match, estimateSuccess } = this.props;
+    const address: any = match.params.search;
 
     if (address) {
-      this.props.estimateSuccess(address);
+      const estimateData = { address, companies };
+      estimateSuccess(estimateData);
       this.inputRef.autocomplete.setVal(address);
     }
   }
 
   onAddressChanged = (address: string) => {
-    this.props.estimateSuccess(address);
-    this.props.history.push("/Estimate/" + address);
+    const { history, estimateSuccess } = this.props;
+    const estimateData = { address, companies };
+    estimateSuccess(estimateData);
+    history.push("/Estimate/" + address);
   };
 
   setRef = (ref: any) => {
