@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a81fe2fc077791eb409d5e7b13926948",
+    "revision": "e087f2bb4503de28ff0000a6452bfdd9",
     "url": "/car-wash-web/index.html"
   },
   {
-    "revision": "f8692ccb16a1f7695c4c",
+    "revision": "f78d188de3318b33213c",
     "url": "/car-wash-web/static/css/2.09d1976d.chunk.css"
   },
   {
-    "revision": "fe1ee6e5c7788fcba736",
-    "url": "/car-wash-web/static/css/main.6894057a.chunk.css"
+    "revision": "448ddb8ad2e597b308d3",
+    "url": "/car-wash-web/static/css/main.477e8e1e.chunk.css"
   },
   {
-    "revision": "f8692ccb16a1f7695c4c",
-    "url": "/car-wash-web/static/js/2.92ab44e9.chunk.js"
+    "revision": "f78d188de3318b33213c",
+    "url": "/car-wash-web/static/js/2.dd08f2a0.chunk.js"
   },
   {
     "revision": "99afe6ae89d1339713d7590d822fd3a8",
-    "url": "/car-wash-web/static/js/2.92ab44e9.chunk.js.LICENSE.txt"
+    "url": "/car-wash-web/static/js/2.dd08f2a0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fe1ee6e5c7788fcba736",
-    "url": "/car-wash-web/static/js/main.47aa8c55.chunk.js"
+    "revision": "448ddb8ad2e597b308d3",
+    "url": "/car-wash-web/static/js/main.6dabadb2.chunk.js"
   },
   {
     "revision": "38bde0ca7b64425d2772",
