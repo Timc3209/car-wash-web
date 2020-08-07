@@ -1,2 +1,3 @@
 export * from "./authTypes";
-export * from "./estimateTypes";
+export * from "./searchTypes";
+export * from "./companyTypes";

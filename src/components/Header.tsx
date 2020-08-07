@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import EstimateAddress from "./EstimateAddress";
+import SearchAddress from "./SearchAddress";
 
 interface Props {
   fixed?: string;
@@ -13,10 +13,10 @@ export default class Header extends React.Component<Props, any> {
     return (
       <div className="header-container">
         <Navbar color="dark" dark expand="md" fixed={fixed}>
-          <NavbarBrand href="/">Car Wash</NavbarBrand>
+          <NavbarBrand href="#">Car Wash</NavbarBrand>
           {showSearch && (
             <div className="navbar-search desktop-only">
-              <EstimateAddress />
+              <SearchAddress />
             </div>
           )}
           <div className="navbar-right">
@@ -31,7 +31,7 @@ export default class Header extends React.Component<Props, any> {
         </Navbar>
         {showSearch && (
           <div className="navbar-search-mobile mobile-only">
-            <EstimateAddress />
+            <SearchAddress />
           </div>
         )}
       </div>

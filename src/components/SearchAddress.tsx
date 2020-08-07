@@ -1,7 +1,7 @@
 import React, { createRef } from "react";
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { estimateSuccess } from "../redux/actions";
+import { searchStart, searchSuccess } from "../redux/actions";
 import { AppState } from "../redux/reducers";
 import LocationAutocomplete from "./LocationAutocomplete";
 import { companies } from "../test/data";
@@ -11,29 +11,37 @@ type MatchProps = {
 };
 
 interface Props extends RouteComponentProps<MatchProps> {
-  estimateSuccess: typeof estimateSuccess;
+  searchSuccess: typeof searchSuccess;
+  searchStart: typeof searchStart;
   address: string;
 }
 
-class EstimateAddress extends React.Component<Props, any> {
+class SearchAddress extends React.Component<Props, any> {
   private inputRef: any = createRef();
 
   componentDidMount() {
-    const { match, estimateSuccess } = this.props;
-    const address: any = match.params.search;
+    const { match } = this.props;
+    const search = match.params.search;
 
-    if (address) {
-      const estimateData = { address, companies };
-      estimateSuccess(estimateData);
-      this.inputRef.autocomplete.setVal(address);
+    if (search) {
+      this.searchAddress(search);
     }
   }
 
+  searchAddress = (search: string) => {
+    const { searchStart, searchSuccess } = this.props;
+    const address = decodeURIComponent(search);
+    this.inputRef.autocomplete.setVal(address);
+
+    const searchData = { address, companies, searching: false };
+
+    searchStart(address);
+    setTimeout(() => searchSuccess(searchData), 500);
+  };
+
   onAddressChanged = (address: string) => {
-    const { history, estimateSuccess } = this.props;
-    const estimateData = { address, companies };
-    estimateSuccess(estimateData);
-    history.push("/Estimate/" + address);
+    const { history } = this.props;
+    history.push("/search/" + encodeURIComponent(address));
   };
 
   setRef = (ref: any) => {
@@ -43,6 +51,7 @@ class EstimateAddress extends React.Component<Props, any> {
   render() {
     return (
       <LocationAutocomplete
+        placeholder="Enter address"
         setRef={this.setRef}
         onChange={this.onAddressChanged}
       />
@@ -50,18 +59,19 @@ class EstimateAddress extends React.Component<Props, any> {
   }
 }
 
-const mapStateToProps = ({ estimate }: AppState) => {
-  const { address } = estimate;
+const mapStateToProps = ({ search }: AppState) => {
+  const { address } = search;
   return { address };
 };
 
 const mapDispatchToProps = {
-  estimateSuccess,
+  searchSuccess,
+  searchStart,
 };
 
 const ConnectedComponent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EstimateAddress);
+)(SearchAddress);
 
 export default withRouter(ConnectedComponent);

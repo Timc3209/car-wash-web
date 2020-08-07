@@ -1,7 +1,9 @@
 import { CompanyState } from "../redux/types";
+import { v4 as uuidv4 } from "uuid";
 
 export const companies: Array<CompanyState> = [
   {
+    id: uuidv4(),
     name: "Dream Wash",
     desc:
       "The Dream Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -14,6 +16,7 @@ export const companies: Array<CompanyState> = [
     email: "support@dreamwash.com",
   },
   {
+    id: uuidv4(),
     name: "Jet Wash",
     desc:
       "The Jet Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -26,6 +29,7 @@ export const companies: Array<CompanyState> = [
     email: "support@jetwash.com",
   },
   {
+    id: uuidv4(),
     name: "Fast Wash",
     desc:
       "The Fast Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -38,9 +42,10 @@ export const companies: Array<CompanyState> = [
     email: "support@fastwash.com",
   },
   {
-    name: "Dream Wash",
+    id: uuidv4(),
+    name: "New Dream Wash",
     desc:
-      "The Dream Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
+      "The New Dream Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
     street: "500 Trumbal",
     city: "Live Oak",
     state: "Texas",
@@ -50,9 +55,10 @@ export const companies: Array<CompanyState> = [
     email: "support@dreamwash.com",
   },
   {
-    name: "Jet Wash",
+    id: uuidv4(),
+    name: "New Jet Wash",
     desc:
-      "The Jet Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
+      "The New Jet Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
     street: "500 Trumbal",
     city: "Live Oak",
     state: "Texas",
@@ -62,9 +68,10 @@ export const companies: Array<CompanyState> = [
     email: "support@jetwash.com",
   },
   {
-    name: "Fast Wash",
+    id: uuidv4(),
+    name: "New Fast Wash",
     desc:
-      "The Fast Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
+      "The New Fast Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
     street: "500 Trumbal",
     city: "Live Oak",
     state: "Texas",

@@ -7,7 +7,7 @@ import { AppState, rootReducer } from "./reducers";
 const persistConfig = {
   key: "main",
   storage,
-  blacklist: ["estimate"],
+  blacklist: ["search"],
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

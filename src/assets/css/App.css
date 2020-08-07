@@ -49,6 +49,12 @@ h6 {
   opacity: 0.3;
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
 @media (min-width: 768px) {
   .mobile-only {
     display: none;

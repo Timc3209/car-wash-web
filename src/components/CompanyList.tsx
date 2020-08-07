@@ -26,6 +26,7 @@ export default class CompanyList extends React.Component<Props, any> {
                   <div className="w-100"></div>
                   <Col key={index} sm="12" lg="4">
                     <Company
+                      id={company.id}
                       name={company.name}
                       desc={company.desc}
                       street=""
@@ -43,6 +44,7 @@ export default class CompanyList extends React.Component<Props, any> {
               return (
                 <Col key={index} sm="12" lg="4">
                   <Company
+                    id={company.id}
                     name={company.name}
                     desc={company.desc}
                     street=""
