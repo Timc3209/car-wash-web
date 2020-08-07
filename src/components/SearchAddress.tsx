@@ -24,17 +24,19 @@ class SearchAddress extends React.Component<Props, any> {
     const search = match.params.search;
 
     if (search) {
-      this.searchAddress(search);
+      const address = decodeURIComponent(search);
+      this.searchAddress(address);
     }
   }
 
-  searchAddress = (search: string) => {
+  searchAddress = (address: string) => {
     const { searchStart, searchSuccess } = this.props;
-    const address = decodeURIComponent(search);
-    this.inputRef.autocomplete.setVal(address);
+
+    if (this.inputRef) {
+      this.inputRef.autocomplete.setVal(address);
+    }
 
     const searchData = { address, companies, searching: false };
-
     searchStart(address);
     setTimeout(() => searchSuccess(searchData), 500);
   };
@@ -42,6 +44,7 @@ class SearchAddress extends React.Component<Props, any> {
   onAddressChanged = (address: string) => {
     const { history } = this.props;
     history.push("/search/" + encodeURIComponent(address));
+    this.searchAddress(address);
   };
 
   setRef = (ref: any) => {
