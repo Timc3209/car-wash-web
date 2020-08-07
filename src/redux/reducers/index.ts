@@ -1,19 +1,19 @@
 import { combineReducers } from "redux";
 import * as authReducer from "./authReducer";
-import * as estimateReducer from "./estimateReducer";
-import { AuthState, EstimateState } from "../types";
+import * as searchReducer from "./searchReducer";
+import { AuthState, SearchState } from "../types";
 
 export interface AppState {
   auth: AuthState;
-  estimate: EstimateState;
+  search: SearchState;
 }
 
 export const AppInitialState: AppState = {
   auth: authReducer.INITIAL_STATE,
-  estimate: estimateReducer.INITIAL_STATE,
+  search: searchReducer.INITIAL_STATE,
 };
 
 export const rootReducer = combineReducers({
   auth: authReducer.reducer,
-  estimate: estimateReducer.reducer,
+  search: searchReducer.reducer,
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "reactstrap";
 import Header from "../components/Header";
-import EstimateAddress from "../components/EstimateAddress";
+import SearchAddress from "../components/SearchAddress";
 
 interface Props {}
 
@@ -17,17 +17,17 @@ class Landing extends React.Component<Props, States> {
           <Container>
             <Row>
               <Col>
-                <h1 className="mb-5 text-white">Get a car wash estimate</h1>
+                <h1 className="mb-5 text-white">Search for a Car Wash</h1>
               </Col>
             </Row>
             <Form>
               <Row>
                 <Col sm="12" md="9" className="mb-4">
-                  <EstimateAddress />
+                  <SearchAddress />
                 </Col>
                 <Col sm="12" md="3">
                   <Button color="primary" size="lg" block>
-                    Get Estimate
+                    Find Car Wash
                   </Button>
                 </Col>
               </Row>
