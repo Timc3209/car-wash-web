@@ -17,17 +17,19 @@ class Landing extends React.Component<Props, States> {
           <Container>
             <Row>
               <Col>
-                <h1 className="mb-5 text-white">Search for a Car Wash</h1>
+                <h1 className="mb-5 text-white">
+                  Where do you want to wash your car?
+                </h1>
               </Col>
             </Row>
             <Form>
               <Row>
-                <Col sm="12" md="9" className="mb-4">
-                  <SearchAddress />
+                <Col sm="12" md="8" lg="9" className="mb-4">
+                  <SearchAddress landing={true} />
                 </Col>
-                <Col sm="12" md="3">
+                <Col sm="12" md="4" lg="3">
                   <Button color="primary" size="lg" block>
-                    Find Car Wash
+                    Book Your Wash
                   </Button>
                 </Col>
               </Row>

@@ -1,9 +1,8 @@
 import { CompanyState } from "../redux/types";
-import { v4 as uuidv4 } from "uuid";
 
 export const companies: Array<CompanyState> = [
   {
-    id: uuidv4(),
+    id: "bcc14768-ab4b-43d1-a18e-2fb12a75eae2",
     name: "Dream Wash",
     desc:
       "The Dream Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -16,7 +15,7 @@ export const companies: Array<CompanyState> = [
     email: "support@dreamwash.com",
   },
   {
-    id: uuidv4(),
+    id: "c1a673cf-f667-4c08-a909-a5b3b51addc8",
     name: "Jet Wash",
     desc:
       "The Jet Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -29,7 +28,7 @@ export const companies: Array<CompanyState> = [
     email: "support@jetwash.com",
   },
   {
-    id: uuidv4(),
+    id: "46e186dd-69b8-49bc-8a9f-93f353279e3d",
     name: "Fast Wash",
     desc:
       "The Fast Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -42,7 +41,7 @@ export const companies: Array<CompanyState> = [
     email: "support@fastwash.com",
   },
   {
-    id: uuidv4(),
+    id: "16e186dd-69b8-49bc-8a9f-93f353279e3d",
     name: "New Dream Wash",
     desc:
       "The New Dream Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -55,7 +54,7 @@ export const companies: Array<CompanyState> = [
     email: "support@dreamwash.com",
   },
   {
-    id: uuidv4(),
+    id: "26e186dd-69b8-49bc-8a9f-93f353279e3d",
     name: "New Jet Wash",
     desc:
       "The New Jet Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
@@ -68,7 +67,7 @@ export const companies: Array<CompanyState> = [
     email: "support@jetwash.com",
   },
   {
-    id: uuidv4(),
+    id: "36e186dd-69b8-49bc-8a9f-93f353279e3d",
     name: "New Fast Wash",
     desc:
       "The New Fast Car Wash is one of the most reliable car wash and detailing businesses in San Antonio, TX",
