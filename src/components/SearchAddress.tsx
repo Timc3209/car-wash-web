@@ -1,30 +1,26 @@
 import React, { createRef } from "react";
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { searchStart, searchSuccess } from "../redux/actions";
+import { searchSet, searchStart, searchSuccess } from "../redux/actions";
 import { AppState } from "../redux/reducers";
 import LocationAutocomplete from "./LocationAutocomplete";
 import { companies } from "../test/data";
 
-type MatchProps = {
-  search: string;
-};
-
-interface Props extends RouteComponentProps<MatchProps> {
+interface Props extends RouteComponentProps {
   searchSuccess: typeof searchSuccess;
   searchStart: typeof searchStart;
+  searchSet: typeof searchSet;
   address: string;
+  landing: boolean;
 }
 
 class SearchAddress extends React.Component<Props, any> {
   private inputRef: any = createRef();
 
   componentDidMount() {
-    const { match } = this.props;
-    const search = match.params.search;
+    const { landing, address } = this.props;
 
-    if (search) {
-      const address = decodeURIComponent(search);
+    if (landing === false) {
       this.searchAddress(address);
     }
   }
@@ -38,13 +34,18 @@ class SearchAddress extends React.Component<Props, any> {
 
     const searchData = { address, companies, searching: false };
     searchStart(address);
-    setTimeout(() => searchSuccess(searchData), 500);
+    setTimeout(() => searchSuccess(searchData), 250);
   };
 
   onAddressChanged = (address: string) => {
-    const { history } = this.props;
-    history.push("/search/" + encodeURIComponent(address));
-    this.searchAddress(address);
+    const { searchSet, landing, history } = this.props;
+
+    if (landing === false) {
+      this.searchAddress(address);
+      return;
+    }
+    searchSet(address);
+    history.push("/search/");
   };
 
   setRef = (ref: any) => {
@@ -52,8 +53,10 @@ class SearchAddress extends React.Component<Props, any> {
   };
 
   render() {
+    const { landing } = this.props;
     return (
       <LocationAutocomplete
+        className={landing ? "form-control-lg form-control" : "form-control"}
         placeholder="Enter address"
         setRef={this.setRef}
         onChange={this.onAddressChanged}
@@ -69,6 +72,7 @@ const mapStateToProps = ({ search }: AppState) => {
 
 const mapDispatchToProps = {
   searchSuccess,
+  searchSet,
   searchStart,
 };
 

@@ -1,5 +1,6 @@
 import {
   SEARCH_SUCCESS,
+  SEARCH_SET,
   SEARCH_START,
   SEARCH_FAIL,
   SearchState,
@@ -8,6 +9,13 @@ import {
 export const searchSuccess = (payload: SearchState) => {
   return {
     type: SEARCH_SUCCESS,
+    payload,
+  };
+};
+
+export const searchSet = (payload: string) => {
+  return {
+    type: SEARCH_SET,
     payload,
   };
 };

@@ -1,16 +1,23 @@
 import React from "react";
-import { Card, CardTitle, CardImg, CardText, Button, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, CardImg, CardText } from "reactstrap";
+import { Link } from "react-router-dom";
 import { CompanyState } from "../redux/types";
-import defaultLogo from "../assets/images/default-company.jpg";
+import defaultLogo from "../assets/images/company-default.jpg";
 
-const Company = ({ name, desc }: CompanyState) => (
-  <Card className="box-shadow mt-2 mb-2" body>
-    <CardImg src={defaultLogo} width="100" alt="Card image cap" />
-    <CardTitle>
-      <span className="h4 float-left mt-2">{name}</span>
-    </CardTitle>
-    <CardText>{desc}</CardText>
-  </Card>
+const Company = ({ id, name, desc }: CompanyState) => (
+  <Link to={`/company/${id}`} className="company-card">
+    <Card className="box-shadow mt-2 mb-2">
+      <CardImg top width="100%" src={defaultLogo} alt={name} />
+      <CardBody>
+        <CardTitle>
+          <h4>{name}</h4>
+        </CardTitle>
+        <CardText>
+          <p>{desc}</p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </Link>
 );
 
 export default Company;

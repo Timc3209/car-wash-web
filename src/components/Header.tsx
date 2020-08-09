@@ -16,7 +16,7 @@ export default class Header extends React.Component<Props, any> {
           <NavbarBrand href="#">Car Wash</NavbarBrand>
           {showSearch && (
             <div className="navbar-search desktop-only">
-              <SearchAddress />
+              <SearchAddress landing={false} />
             </div>
           )}
           <div className="navbar-right">
@@ -31,7 +31,7 @@ export default class Header extends React.Component<Props, any> {
         </Navbar>
         {showSearch && (
           <div className="navbar-search-mobile mobile-only">
-            <SearchAddress />
+            <SearchAddress landing={false} />
           </div>
         )}
       </div>

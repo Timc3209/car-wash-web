@@ -2,6 +2,7 @@ import React from "react";
 import AlgoliaPlaces from "algolia-places-react";
 
 interface Props {
+  className: string;
   placeholder: string;
   onChange: (address: string) => void;
   setRef?: any;
@@ -13,12 +14,12 @@ interface OnChangeProps {
 }
 
 export default (props: Props) => {
-  const { placeholder, onChange, setRef } = props;
+  const { className, placeholder, onChange, setRef } = props;
   return (
     <AlgoliaPlaces
       ref={setRef && setRef}
       placeholder={placeholder}
-      className="form-control-lg form-control"
+      className={className}
       options={{
         appId: process.env.ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_APP_KEY,

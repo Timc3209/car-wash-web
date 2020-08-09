@@ -1,5 +1,6 @@
 import {
   SEARCH_SUCCESS,
+  SEARCH_SET,
   SEARCH_START,
   SEARCH_FAIL,
   SearchState,
@@ -14,6 +15,11 @@ export const INITIAL_STATE: SearchState = {
 
 export function reducer(state = INITIAL_STATE, action: SearchActionTypes) {
   switch (action.type) {
+    case SEARCH_SET:
+      return {
+        ...state,
+        address: action.payload,
+      };
     case SEARCH_START:
       return {
         ...state,
