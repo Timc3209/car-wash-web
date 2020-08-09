@@ -2,7 +2,7 @@
 
 ## Description
 
-A react project that allows users to find places and people to wash there car.
+Car Wash is a car wash booking platform built with React.js that helps users easily find a business to book a car wash at their location.
 
 ## Deployment Link
 
