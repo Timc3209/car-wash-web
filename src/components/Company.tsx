@@ -12,9 +12,7 @@ const Company = ({ id, name, desc }: CompanyState) => (
         <CardTitle>
           <h4>{name}</h4>
         </CardTitle>
-        <CardText>
-          <p>{desc}</p>
-        </CardText>
+        <CardText>{desc}</CardText>
       </CardBody>
     </Card>
   </Link>

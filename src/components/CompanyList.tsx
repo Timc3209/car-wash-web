@@ -19,46 +19,27 @@ export default class CompanyList extends React.Component<Props, any> {
           </Col>
         </Row>
         <Row>
-          {companies.map((company: CompanyState, index: number) => {
-            if (index % 3 === 0 && index !== 0) {
-              return (
-                <React.Fragment>
-                  <div className="w-100"></div>
-                  <Col key={index} sm="12" lg="4">
-                    <Company
-                      id={company.id}
-                      name={company.name}
-                      desc={company.desc}
-                      street=""
-                      city=""
-                      state=""
-                      zip=""
-                      country=""
-                      phone=""
-                      email=""
-                    />
-                  </Col>
-                </React.Fragment>
-              );
-            } else {
-              return (
-                <Col key={index} sm="12" lg="4">
-                  <Company
-                    id={company.id}
-                    name={company.name}
-                    desc={company.desc}
-                    street=""
-                    city=""
-                    state=""
-                    zip=""
-                    country=""
-                    phone=""
-                    email=""
-                  />
-                </Col>
-              );
-            }
-          })}
+          {companies.map((company: CompanyState, index: number) => (
+            <React.Fragment key={index}>
+              {index % 3 === 0 && index !== 0 && <div className="w-100"></div>}
+              <Col sm="12" lg="4">
+                <Company
+                  id={company.id}
+                  name={company.name}
+                  desc={company.desc}
+                  street={company.street}
+                  city={company.city}
+                  state={company.state}
+                  zip={company.zip}
+                  country={company.country}
+                  phone={company.phone}
+                  email={company.email}
+                  packages={company.packages}
+                  addons={company.addons}
+                />
+              </Col>
+            </React.Fragment>
+          ))}
         </Row>
       </Container>
     );

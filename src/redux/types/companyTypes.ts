@@ -1,3 +1,18 @@
+export interface PackageState {
+  id: string;
+  name: string;
+  price: number;
+  duration: number;
+  lines: string[];
+}
+
+export interface AddonState {
+  id: string;
+  name: string;
+  price: number;
+  duration: number;
+}
+
 export interface CompanyState {
   id: string;
   name: string;
@@ -9,4 +24,6 @@ export interface CompanyState {
   country: string;
   phone: string;
   email: string;
+  packages: Array<PackageState>;
+  addons: Array<AddonState>;
 }

@@ -22,7 +22,7 @@ export default class Header extends React.Component<Props, any> {
           <div className="navbar-right">
             <Nav navbar>
               <NavItem>
-                <NavLink to="/Estimate/sdadsa" className="nav-link">
+                <NavLink to="/login" className="nav-link">
                   Sign In
                 </NavLink>
               </NavItem>

@@ -17,6 +17,7 @@ export default (props: Props) => {
   const { className, placeholder, onChange, setRef } = props;
   return (
     <AlgoliaPlaces
+      data-testid={"location-autocomplete"}
       ref={setRef && setRef}
       placeholder={placeholder}
       className={className}
