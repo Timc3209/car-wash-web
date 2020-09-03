@@ -1,4 +1,5 @@
 import {
+  SET_BOOKING_COMPANY,
   SET_BOOKING_DATE,
   SET_BOOKING_TYPE,
   SET_BOOKING_TOTAL,
@@ -10,7 +11,14 @@ import {
   PackageState,
 } from "../types";
 
-export const setBookingDate = (payload: Date) => {
+export const setBookingCompany = (payload: string) => {
+  return {
+    type: SET_BOOKING_COMPANY,
+    payload,
+  };
+};
+
+export const setBookingDate = (payload: number) => {
   return {
     type: SET_BOOKING_DATE,
     payload,

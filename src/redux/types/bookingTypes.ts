@@ -1,4 +1,5 @@
 import { PackageState, AddonState } from "../types";
+export const SET_BOOKING_COMPANY = "SET_BOOKING_COMPANY";
 export const SET_BOOKING_DATE = "SET_BOOKING_DATE";
 export const SET_BOOKING_TYPE = "SET_BOOKING_TYPE";
 export const SET_BOOKING_TOTAL = "SET_BOOKING_TOTAL";
@@ -8,7 +9,8 @@ export const REMOVE_BOOKING_ADDON = "REMOVE_BOOKING_ADDON";
 export const RESET_BOOKING = "RESET_BOOKING";
 
 export interface BookingState {
-  bookingDate: Date;
+  bookingCompanyID: string;
+  bookingDate: number;
   bookingType: string;
   bookingPackage: PackageState;
   bookingAddons: Array<AddonState>;
@@ -17,9 +19,14 @@ export interface BookingState {
   bookingDuration: number;
 }
 
+interface SetBookingCompanyAction {
+  type: typeof SET_BOOKING_COMPANY;
+  payload: string;
+}
+
 interface SetBookingDateAction {
   type: typeof SET_BOOKING_DATE;
-  payload: Date;
+  payload: number;
 }
 
 interface SetBookingTypeAction {
@@ -52,6 +59,7 @@ interface ResetBookingAction {
 }
 
 export type BookingActionTypes =
+  | SetBookingCompanyAction
   | SetBookingDateAction
   | SetBookingTypeAction
   | SetBookingTotalAction

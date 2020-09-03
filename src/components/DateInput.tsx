@@ -4,16 +4,16 @@ import DatePicker from "react-datepicker";
 
 interface Props {
   label: string;
-  date: Date;
-  onChange: (date: Date) => void;
+  date: number;
+  onChange: (date: number) => void;
 }
 
 const LabelInput = ({ label, date, onChange }: Props) => (
   <FormGroup>
     {label !== "" && <Label for="exampleEmail">{label}</Label>}
     <DatePicker
-      selected={date}
-      onChange={(date: Date) => onChange(date)}
+      selected={new Date(date)}
+      onChange={(date: Date) => onChange(date.getTime())}
       className="form-control"
       withPortal={true}
     />
