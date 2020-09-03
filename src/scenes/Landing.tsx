@@ -11,7 +11,7 @@ class Landing extends React.Component<Props, States> {
   render() {
     return (
       <div className="App">
-        <Header fixed="top" showSearch={false} />
+        <Header fixed="top" showSearch={false} page="/" />
         <main className="landing-background">
           <div className="overlay"></div>
           <Container>

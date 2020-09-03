@@ -8,7 +8,6 @@ import { AppState, rootReducer } from "./reducers";
 const persistConfig = {
   key: "main",
   storage,
-  blacklist: ["booking"],
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,4 +19,5 @@ const persistedReducer = persistReducer<AppState, any>(
 const middleware = composeWithDevTools(applyMiddleware(thunk));
 const store = createStore(persistedReducer, middleware);
 const persistor = persistStore(store);
+// persistor.purge();
 export { store, persistor };

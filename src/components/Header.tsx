@@ -1,15 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 import SearchAddress from "./SearchAddress";
+import { logout } from "../redux/actions";
+import { AppState } from "../redux/reducers";
 
 interface Props {
   fixed?: string;
   showSearch: boolean;
+  page: string;
+  loggedIn: boolean;
+  logout: typeof logout;
 }
 
-export default class Header extends React.Component<Props, any> {
+class Header extends React.Component<Props, any> {
+  logout = () => {
+    const { logout } = this.props;
+    logout();
+  };
+
   render() {
-    const { fixed, showSearch } = this.props;
+    const { fixed, showSearch, page, loggedIn } = this.props;
     return (
       <div className="header-container">
         <Navbar color="dark" dark expand="md" fixed={fixed}>
@@ -22,9 +33,19 @@ export default class Header extends React.Component<Props, any> {
           <div className="navbar-right">
             <Nav navbar>
               <NavItem>
-                <NavLink to="/login" className="nav-link">
-                  Sign In
-                </NavLink>
+                {loggedIn ? (
+                  <NavLink
+                    href={`#`}
+                    onClick={this.logout}
+                    className="nav-link"
+                  >
+                    Log out
+                  </NavLink>
+                ) : (
+                  <NavLink href={`#login${page}`} className="nav-link">
+                    Sign in
+                  </NavLink>
+                )}
               </NavItem>
             </Nav>
           </div>
@@ -38,3 +59,14 @@ export default class Header extends React.Component<Props, any> {
     );
   }
 }
+
+const mapStateToProps = ({ auth }: AppState) => {
+  const { loggedIn } = auth;
+  return { loggedIn };
+};
+
+const mapDispatchToProps = {
+  logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

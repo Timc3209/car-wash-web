@@ -17,7 +17,7 @@ class Search extends React.Component<Props> {
     const { searching, companies } = this.props;
     return (
       <div className="App">
-        <Header showSearch={true} />
+        <Header showSearch={true} page="/search" />
         {searching ? (
           <Spinner />
         ) : (

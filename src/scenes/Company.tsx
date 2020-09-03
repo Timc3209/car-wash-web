@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, ListGroup } from "reactstrap";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { AppState } from "../redux/reducers";
 import {
+  setBookingCompany,
   setBookingDate,
   setBookingType,
   setBookingTotal,
@@ -26,14 +27,17 @@ type MatchProps = {
 };
 
 interface Props extends RouteComponentProps<MatchProps> {
+  loggedIn: boolean;
   address: string;
-  bookingDate: Date;
+  bookingCompanyID: string;
+  bookingDate: number;
   bookingType: string;
   bookingPackage: PackageState;
   bookingAddons: Array<AddonState>;
   bookingAddonIDs: string[];
   bookingPrice: number;
   bookingDuration: number;
+  setBookingCompany: typeof setBookingCompany;
   setBookingDate: typeof setBookingDate;
   setBookingType: typeof setBookingType;
   setBookingTotal: typeof setBookingTotal;
@@ -60,16 +64,17 @@ class Company extends React.Component<Props, CompanyState> {
   };
 
   componentDidMount() {
-    const { match, resetBooking } = this.props;
+    const { match } = this.props;
     const id = match.params.id;
 
     if (id) {
-      resetBooking();
       this.loadCompany(id);
     }
   }
 
   loadCompany = (id: string) => {
+    const { bookingCompanyID, setBookingCompany } = this.props;
+
     const data = companies.filter(
       (company: CompanyState) => company.id === id
     )[0];
@@ -77,11 +82,15 @@ class Company extends React.Component<Props, CompanyState> {
     if (data) {
       const { name, desc, packages, addons } = data;
       this.setState({ id, name, desc, packages, addons });
+
+      if (bookingCompanyID !== id) {
+        setBookingCompany(id);
+      }
       return true;
     }
   };
 
-  selectBookingDate = (bookingDate: Date) => {
+  selectBookingDate = (bookingDate: number) => {
     const { setBookingDate } = this.props;
     setBookingDate(bookingDate);
   };
@@ -138,10 +147,16 @@ class Company extends React.Component<Props, CompanyState> {
     }
   };
 
+  login = () => {
+    const { history, bookingCompanyID } = this.props;
+    history.push(`/login/company/${bookingCompanyID}`);
+  };
+
   render() {
-    const { name, desc, packages, addons } = this.state;
+    const { id, name, desc, packages, addons } = this.state;
 
     const {
+      loggedIn,
       bookingDate,
       bookingType,
       bookingPackage,
@@ -152,7 +167,7 @@ class Company extends React.Component<Props, CompanyState> {
 
     return (
       <div className="App">
-        <Header showSearch={false} />
+        <Header showSearch={false} page={`/company/${id}`} />
         <Container>
           <Row className="mt-2 mb-2">
             <Col>
@@ -259,9 +274,20 @@ class Company extends React.Component<Props, CompanyState> {
                         Total Price: ${bookingPrice}
                       </span>
                     </div>
-                    <Button color="primary" size="lg" block>
-                      Book Your Wash
-                    </Button>
+                    {loggedIn ? (
+                      <Button color="primary" size="lg" block>
+                        Book Your Wash
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={this.login}
+                        color="primary"
+                        size="lg"
+                        block
+                      >
+                        Login to book
+                      </Button>
+                    )}
                   </div>
                   <br />
                 </Col>
@@ -274,9 +300,11 @@ class Company extends React.Component<Props, CompanyState> {
   }
 }
 
-const mapStateToProps = ({ search, booking }: AppState) => {
+const mapStateToProps = ({ auth, search, booking }: AppState) => {
+  const { loggedIn } = auth;
   const { address } = search;
   const {
+    bookingCompanyID,
     bookingDate,
     bookingType,
     bookingPackage,
@@ -286,7 +314,9 @@ const mapStateToProps = ({ search, booking }: AppState) => {
     bookingDuration,
   } = booking;
   return {
+    loggedIn,
     address,
+    bookingCompanyID,
     bookingDate,
     bookingType,
     bookingPackage,
@@ -298,6 +328,7 @@ const mapStateToProps = ({ search, booking }: AppState) => {
 };
 
 const mapDispatchToProps = {
+  setBookingCompany,
   setBookingDate,
   setBookingType,
   setBookingTotal,
