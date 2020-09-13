@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/car-wash-web/static/css/main.6380368d.chunk.css",
-    "main.js": "/car-wash-web/static/js/main.0532e800.chunk.js",
-    "main.js.map": "/car-wash-web/static/js/main.0532e800.chunk.js.map",
+    "main.css": "/car-wash-web/static/css/main.4f1e7e53.chunk.css",
+    "main.js": "/car-wash-web/static/js/main.271ad760.chunk.js",
+    "main.js.map": "/car-wash-web/static/js/main.271ad760.chunk.js.map",
     "runtime-main.js": "/car-wash-web/static/js/runtime-main.2c96ab25.js",
     "runtime-main.js.map": "/car-wash-web/static/js/runtime-main.2c96ab25.js.map",
     "static/css/2.2bf7ec80.chunk.css": "/car-wash-web/static/css/2.2bf7ec80.chunk.css",
-    "static/js/2.4813ba51.chunk.js": "/car-wash-web/static/js/2.4813ba51.chunk.js",
-    "static/js/2.4813ba51.chunk.js.map": "/car-wash-web/static/js/2.4813ba51.chunk.js.map",
+    "static/js/2.9a42e445.chunk.js": "/car-wash-web/static/js/2.9a42e445.chunk.js",
+    "static/js/2.9a42e445.chunk.js.map": "/car-wash-web/static/js/2.9a42e445.chunk.js.map",
     "index.html": "/car-wash-web/index.html",
-    "precache-manifest.c46d9898058fef1edd671963889c4af3.js": "/car-wash-web/precache-manifest.c46d9898058fef1edd671963889c4af3.js",
+    "precache-manifest.04ec4278a2119f16431e0be7cee2f1b4.js": "/car-wash-web/precache-manifest.04ec4278a2119f16431e0be7cee2f1b4.js",
     "service-worker.js": "/car-wash-web/service-worker.js",
     "static/css/2.2bf7ec80.chunk.css.map": "/car-wash-web/static/css/2.2bf7ec80.chunk.css.map",
-    "static/css/main.6380368d.chunk.css.map": "/car-wash-web/static/css/main.6380368d.chunk.css.map",
-    "static/js/2.4813ba51.chunk.js.LICENSE.txt": "/car-wash-web/static/js/2.4813ba51.chunk.js.LICENSE.txt",
+    "static/css/main.4f1e7e53.chunk.css.map": "/car-wash-web/static/css/main.4f1e7e53.chunk.css.map",
+    "static/js/2.9a42e445.chunk.js.LICENSE.txt": "/car-wash-web/static/js/2.9a42e445.chunk.js.LICENSE.txt",
     "static/media/company-default.jpg": "/car-wash-web/static/media/company-default.92886368.jpg",
     "static/media/App.css": "/car-wash-web/static/media/landing-bg.c41732b8.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2c96ab25.js",
     "static/css/2.2bf7ec80.chunk.css",
-    "static/js/2.4813ba51.chunk.js",
-    "static/css/main.6380368d.chunk.css",
-    "static/js/main.0532e800.chunk.js"
+    "static/js/2.9a42e445.chunk.js",
+    "static/css/main.4f1e7e53.chunk.css",
+    "static/js/main.271ad760.chunk.js"
   ]
 }
