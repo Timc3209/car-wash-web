@@ -17,25 +17,29 @@ interface Props extends RouteComponentProps<MatchProps> {
   loginSuccess: typeof loginSuccess;
 }
 
+interface ErrorField {
+  email: string;
+  password: string;
+}
+
 interface States {
   email: string;
   password: string;
-  showError: boolean;
-  errorInput: string;
-  errorMessage: string;
   page: string;
   id: string;
+  errors: ErrorField;
 }
 
 class Login extends React.Component<Props, States> {
   readonly state: States = {
     email: "demo@gmail.com",
     password: "demo",
-    showError: false,
-    errorInput: "",
-    errorMessage: "",
     page: "",
     id: "",
+    errors: {
+      email: "",
+      password: "",
+    },
   };
 
   componentDidMount() {
@@ -52,24 +56,28 @@ class Login extends React.Component<Props, States> {
     this.setState({ page, id });
   };
 
+  clearError = (name: keyof ErrorField) => {
+    const { errors } = this.state;
+    errors[name] = "";
+    this.setState({ errors });
+  };
+
+  setError = (name: keyof ErrorField, value: string) => {
+    const { errors } = this.state;
+    errors[name] = value;
+    this.setState({ errors });
+  };
+
   checkLogin = async () => {
     const { history } = this.props;
     const { email, password, page, id } = this.state;
 
     if (email === "") {
-      this.setState({
-        showError: true,
-        errorInput: "email",
-        errorMessage: "Please enter a valid email",
-      });
+      this.setError("email", "Please enter a valid email");
       return false;
     }
     if (password === "") {
-      this.setState({
-        showError: true,
-        errorInput: "password",
-        errorMessage: "Please enter password",
-      });
+      this.setError("password", "Invalid email or password");
       return false;
     }
 
@@ -92,21 +100,17 @@ class Login extends React.Component<Props, States> {
       return true;
     }
 
-    this.setState({
-      showError: true,
-      errorInput: "password",
-      errorMessage: "Invalid username or password",
-    });
+    this.setError("password", "Invalid email or password");
   };
 
   onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const key = event.currentTarget.name;
     const value = event.currentTarget.value;
-    this.setState<never>({ [key]: value, showError: false });
+    this.setState<never>({ [key]: value, errors: { email: "", password: "" } });
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, errors } = this.state;
     return (
       <div className="login-container">
         <h1 className="login-header text-center">Car Wash</h1>
@@ -118,10 +122,7 @@ class Login extends React.Component<Props, States> {
             type="text"
             value={email}
             onChange={this.onChange}
-            showError={
-              this.state.errorInput === "email" && this.state.showError
-            }
-            errorMessage={this.state.errorMessage}
+            errorMessage={errors.email}
           />
           <LabelInput
             name="password"
@@ -129,10 +130,7 @@ class Login extends React.Component<Props, States> {
             type="password"
             value={password}
             onChange={this.onChange}
-            showError={
-              this.state.errorInput === "password" && this.state.showError
-            }
-            errorMessage={this.state.errorMessage}
+            errorMessage={errors.password}
           />
           <Button
             className="btn-lg btn-dark btn-block mt-4"

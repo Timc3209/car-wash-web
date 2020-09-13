@@ -12,7 +12,7 @@ test("renders header", () => {
   const { getByText } = render(
     <Provider store={store}>
       <MemoryRouter>
-        <Header showSearch={true} />
+        <Header showSearch={true} page="/" />
       </MemoryRouter>
     </Provider>
   );

@@ -4,6 +4,7 @@ import {
   SEARCH_START,
   SEARCH_FAIL,
   SearchState,
+  LocationState,
 } from "../types";
 
 export const searchSuccess = (payload: SearchState) => {
@@ -13,21 +14,21 @@ export const searchSuccess = (payload: SearchState) => {
   };
 };
 
-export const searchSet = (payload: string) => {
+export const searchSet = (payload: LocationState) => {
   return {
     type: SEARCH_SET,
     payload,
   };
 };
 
-export const searchStart = (payload: string) => {
+export const searchStart = (payload: LocationState) => {
   return {
     type: SEARCH_START,
     payload,
   };
 };
 
-export const searchFail = (payload: string) => {
+export const searchFail = (payload: LocationState) => {
   return {
     type: SEARCH_FAIL,
     payload,

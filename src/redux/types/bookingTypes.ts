@@ -1,6 +1,12 @@
-import { PackageState, AddonState } from "../types";
+import {
+  PackageState,
+  AddonState,
+  CompanyState,
+  TimeSlotState,
+} from "../types";
 export const SET_BOOKING_COMPANY = "SET_BOOKING_COMPANY";
 export const SET_BOOKING_DATE = "SET_BOOKING_DATE";
+export const SET_BOOKING_TIMESLOT = "SET_BOOKING_TIMESLOT";
 export const SET_BOOKING_TYPE = "SET_BOOKING_TYPE";
 export const SET_BOOKING_TOTAL = "SET_BOOKING_TOTAL";
 export const SET_BOOKING_PACKAGE = "SET_BOOKING_PACKAGE";
@@ -9,8 +15,9 @@ export const REMOVE_BOOKING_ADDON = "REMOVE_BOOKING_ADDON";
 export const RESET_BOOKING = "RESET_BOOKING";
 
 export interface BookingState {
-  bookingCompanyID: string;
+  bookingCompany: CompanyState | undefined;
   bookingDate: number;
+  bookingTimeSlot: TimeSlotState | undefined;
   bookingType: string;
   bookingPackage: PackageState;
   bookingAddons: Array<AddonState>;
@@ -21,12 +28,17 @@ export interface BookingState {
 
 interface SetBookingCompanyAction {
   type: typeof SET_BOOKING_COMPANY;
-  payload: string;
+  payload: CompanyState;
 }
 
 interface SetBookingDateAction {
   type: typeof SET_BOOKING_DATE;
   payload: number;
+}
+
+interface SetBookingTimeSlotAction {
+  type: typeof SET_BOOKING_TIMESLOT;
+  payload: TimeSlotState;
 }
 
 interface SetBookingTypeAction {
@@ -61,6 +73,7 @@ interface ResetBookingAction {
 export type BookingActionTypes =
   | SetBookingCompanyAction
   | SetBookingDateAction
+  | SetBookingTimeSlotAction
   | SetBookingTypeAction
   | SetBookingTotalAction
   | SetBookingPackageAction

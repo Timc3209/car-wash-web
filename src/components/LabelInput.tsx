@@ -10,7 +10,6 @@ const LabelInput = ({
   placeholder,
   onChange,
   errorMessage,
-  showError,
 }: InputProps) => (
   <FormGroup>
     <Label for={id}>{label}</Label>
@@ -20,7 +19,7 @@ const LabelInput = ({
       value={value}
       id={id}
       placeholder={placeholder}
-      invalid={showError}
+      invalid={errorMessage !== ""}
       onChange={onChange}
     />
     <FormFeedback>{errorMessage}</FormFeedback>

@@ -11,7 +11,7 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router />
+        <Router loggedIn={false} />
       </PersistGate>
     </Provider>
   );

@@ -1,6 +1,7 @@
 import {
   SET_BOOKING_COMPANY,
   SET_BOOKING_DATE,
+  SET_BOOKING_TIMESLOT,
   SET_BOOKING_TYPE,
   SET_BOOKING_PACKAGE,
   SET_BOOKING_TOTAL,
@@ -13,8 +14,9 @@ import {
 } from "../types";
 
 export const INITIAL_STATE: BookingState = {
-  bookingCompanyID: "0",
+  bookingCompany: undefined,
   bookingDate: new Date().getTime(),
+  bookingTimeSlot: undefined,
   bookingType: "",
   bookingPackage: { id: "", name: "", price: 0, duration: 0, lines: [] },
   bookingAddons: [],
@@ -28,17 +30,24 @@ export function reducer(state = INITIAL_STATE, action: BookingActionTypes) {
     case SET_BOOKING_COMPANY:
       return {
         ...INITIAL_STATE,
-        bookingCompanyID: action.payload,
+        bookingCompany: action.payload,
       };
     case SET_BOOKING_DATE:
       return {
         ...state,
         bookingDate: action.payload,
+        bookingTimeSlot: undefined,
+      };
+    case SET_BOOKING_TIMESLOT:
+      return {
+        ...state,
+        bookingTimeSlot: action.payload,
       };
     case SET_BOOKING_TYPE:
       return {
         ...state,
         bookingType: action.payload,
+        bookingPackage: INITIAL_STATE.bookingPackage,
       };
     case SET_BOOKING_TOTAL:
       return {

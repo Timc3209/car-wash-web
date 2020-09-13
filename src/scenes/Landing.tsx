@@ -1,13 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "reactstrap";
 import Header from "../components/Header";
-import SearchAddress from "../components/SearchAddress";
+import LocationAutocomplete from "../components/LocationAutocomplete";
 
-interface Props {}
-
-interface States {}
-
-class Landing extends React.Component<Props, States> {
+class Landing extends React.Component<{}> {
   render() {
     return (
       <div className="App">
@@ -25,7 +21,7 @@ class Landing extends React.Component<Props, States> {
             <Form>
               <Row>
                 <Col sm="12" md="8" lg="9" className="mb-4">
-                  <SearchAddress landing={true} />
+                  <LocationAutocomplete landing={true} />
                 </Col>
                 <Col sm="12" md="4" lg="3">
                   <Button color="primary" size="lg" block>
