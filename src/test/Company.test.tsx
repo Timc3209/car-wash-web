@@ -21,7 +21,9 @@ test("renders company", () => {
         phone={company.phone}
         email={company.email}
         packages={company.packages}
+        packagesTruck={company.packagesTruck}
         addons={company.addons}
+        timeSlots={company.timeSlots}
       />
     </MemoryRouter>
   );

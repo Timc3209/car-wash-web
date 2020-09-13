@@ -1,6 +1,7 @@
 import {
   SET_BOOKING_COMPANY,
   SET_BOOKING_DATE,
+  SET_BOOKING_TIMESLOT,
   SET_BOOKING_TYPE,
   SET_BOOKING_TOTAL,
   SET_BOOKING_PACKAGE,
@@ -9,9 +10,11 @@ import {
   RESET_BOOKING,
   AddonState,
   PackageState,
+  CompanyState,
+  TimeSlotState,
 } from "../types";
 
-export const setBookingCompany = (payload: string) => {
+export const setBookingCompany = (payload: CompanyState) => {
   return {
     type: SET_BOOKING_COMPANY,
     payload,
@@ -21,6 +24,13 @@ export const setBookingCompany = (payload: string) => {
 export const setBookingDate = (payload: number) => {
   return {
     type: SET_BOOKING_DATE,
+    payload,
+  };
+};
+
+export const setBookingTimeSlot = (payload: TimeSlotState) => {
+  return {
+    type: SET_BOOKING_TIMESLOT,
     payload,
   };
 };

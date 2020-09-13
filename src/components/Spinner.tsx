@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner as ReactstrapSpinner } from "reactstrap";
 
-export default class Spinner extends React.Component<any, any> {
+export default class Spinner extends React.Component<{}> {
   render() {
     return (
       <div className="spinner-container">

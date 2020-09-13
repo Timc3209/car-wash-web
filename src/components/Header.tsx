@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import SearchAddress from "./SearchAddress";
+import LocationAutocomplete from "./LocationAutocomplete";
 import { logout } from "../redux/actions";
 import { AppState } from "../redux/reducers";
 
@@ -13,7 +13,7 @@ interface Props {
   logout: typeof logout;
 }
 
-class Header extends React.Component<Props, any> {
+class Header extends React.Component<Props> {
   logout = () => {
     const { logout } = this.props;
     logout();
@@ -27,7 +27,7 @@ class Header extends React.Component<Props, any> {
           <NavbarBrand href="#">Car Wash</NavbarBrand>
           {showSearch && (
             <div className="navbar-search desktop-only">
-              <SearchAddress landing={false} />
+              <LocationAutocomplete landing={false} />
             </div>
           )}
           <div className="navbar-right">
@@ -52,7 +52,7 @@ class Header extends React.Component<Props, any> {
         </Navbar>
         {showSearch && (
           <div className="navbar-search-mobile mobile-only">
-            <SearchAddress landing={false} />
+            <LocationAutocomplete landing={false} />
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@ interface Props {
   companies: Array<CompanyState>;
 }
 
-export default class CompanyList extends React.Component<Props, any> {
+export default class CompanyList extends React.Component<Props> {
   render() {
     const { title, companies } = this.props;
     return (
@@ -35,7 +35,9 @@ export default class CompanyList extends React.Component<Props, any> {
                   phone={company.phone}
                   email={company.email}
                   packages={company.packages}
+                  packagesTruck={company.packagesTruck}
                   addons={company.addons}
+                  timeSlots={company.timeSlots}
                 />
               </Col>
             </React.Fragment>

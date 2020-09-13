@@ -4,25 +4,30 @@ export const SEARCH_START = "SEARCH_START";
 export const SEARCH_FAIL = "SEARCH_FAIL";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
 
+export interface LocationState {
+  name: string;
+  address: string;
+}
+
 export interface SearchState {
   searching: boolean;
-  address: string;
+  address: LocationState;
   companies: Array<CompanyState>;
 }
 
 interface SearchSetAction {
   type: typeof SEARCH_SET;
-  payload: string;
+  payload: LocationState;
 }
 
 interface SearchStartAction {
   type: typeof SEARCH_START;
-  payload: string;
+  payload: LocationState;
 }
 
 interface SearchFailAction {
   type: typeof SEARCH_FAIL;
-  payload: string;
+  payload: LocationState;
 }
 
 interface SearchSuccessAction {

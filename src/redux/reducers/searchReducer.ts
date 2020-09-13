@@ -9,7 +9,7 @@ import {
 
 export const INITIAL_STATE: SearchState = {
   searching: false,
-  address: "",
+  address: { name: "", address: "" },
   companies: [],
 };
 

@@ -12,6 +12,10 @@ h6 {
   font-weight: 700;
 }
 
+.ap-icon-pin {
+  display: none;
+}
+
 .navbar-brand {
   margin-left: 15px;
 }
@@ -26,7 +30,7 @@ h6 {
 
 .navbar-search {
   margin-left: 20px;
-  width: 500px;
+  width: 400px;
 }
 
 .landing-background {
@@ -79,10 +83,6 @@ h6 {
   font-weight: 500;
 }
 
-.booking-container h6 {
-  font-size: 1.1rem;
-}
-
 .package-item {
   text-align: center;
   padding: 0.5rem;
@@ -92,7 +92,12 @@ h6 {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  height: 120px;
+  min-height: 100px;
+  font-size: 13px;
+}
+
+.package-item ul small {
+  font-weight: 500;
 }
 
 .package-item .icon {
@@ -152,6 +157,16 @@ h6 {
 
 .login-form {
   padding-top: 5px;
+}
+
+.dropdown-toggle {
+  text-align: left;
+}
+
+.dropdown-toggle::after {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
 }
 
 @media (min-width: 768px) {

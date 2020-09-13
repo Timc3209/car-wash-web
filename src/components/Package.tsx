@@ -22,9 +22,9 @@ const Package = ({
   lines,
   onClick,
 }: Props) => (
-  <div className="package-item border py-3">
+  <div className="package-item border py-2">
     <h6>{name}</h6>
-    <h2 className="text-primary">${price}</h2>
+    <h3 className="text-primary">${price}</h3>
     <div className="flex-center border-top border-bottom py-1 my-2">
       <Icon icon={clock} width={"0.7em"} color="#313436" className="icon" />
       <span className="text-muted">{duration} Min</span>
